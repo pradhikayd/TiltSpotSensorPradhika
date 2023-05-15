@@ -156,10 +156,10 @@ limitations under the License. -->
 
     <Button
         android:id="@+id/bsave"
-        android:layout_width="109dp"
-        android:layout_height="50dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:drawableStart="@drawable/baseline_add_circle_24"
-        android:text="tambah"
+        android:text="buat txt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintLeft_toLeftOf="parent"

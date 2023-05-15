@@ -47,22 +47,22 @@ import android.os.Environment;
 public class MainActivity extends AppCompatActivity
         implements SensorEventListener {
 
-    //button deklarasi save
+    //deklarasi tombol save
     Button save;
 
-    // System sensor manager instance.
+    // Deklarasi System sensor manager instance.
     private SensorManager mSensorManager;
 
-    // Sensor akselerometer dan magnetometer, sebagaimana diambil dari sensor manager.
+    // Deklarasi sensor akselerometer dan magnetometer, sebagaimana diambil dari sensor manager.
     private Sensor mSensorAccelerometer;
     private Sensor mSensorMagnetometer;
 
-    // Data ini dari akselerometer dan magnetometer. The arrays hold values
-    // for X, Y, and Z.
+    // Deklarasi variabel yang diperoleh dari akselerometer dan magnetometer.
+    // Array tersebut menyimpan nilai dari X, Y, and Z.
     private float[] mAccelerometerData = new float[3];
     private float[] mMagnetometerData = new float[3];
 
-    // TextViews to display current sensor values.
+    // TextViews untuk menampilkan nilai sensor saat ini.
     private TextView mTextSensorAzimuth;
     private TextView mTextSensorPitch;
     private TextView mTextSensorRoll;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity
     private TextView label2;
     private TextView label3;
 
-    //Nilai yang sangat kecil untuk akselerometer (pada ketiga sumbu) seharusnya
+    // Nilai yang sangat kecil untuk akselerometer (pada ketiga sumbu) seharusnya
     // diartikan sebagai 0. Nilai ini adalah jumlah yang dapat diterima
     // drift bukan nol.
     private static final float VALUE_DRIFT = 0.05f;
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
             //}
         //});
 
-        //button save dan method
+        //tombol save dan method
         save.setOnClickListener((view)-> {
             if (!mTextSensorAzimuth.getText().toString().isEmpty()) {
                 File file = new File(MainActivity.this.getFilesDir(), "text");
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
                    file.mkdir();
                 }
                 try{
-                    File gpxfile = new File(file, "sample");
+                    File gpxfile = new File(file, "HasilSensor");
                         FileWriter writer = new FileWriter(gpxfile);
                          writer.append(label1.getText().toString() + "\t");
                          writer.append(mTextSensorAzimuth.getText().toString() + "\n");
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity
                          writer.flush();
                          writer.close();
 
-                        Toast.makeText(MainActivity.this, "menyimpan data azimuth, pitch dan roll", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "menyimpan nilai sensor pada file teks", Toast.LENGTH_LONG).show();
                 }catch (Exception e){
 
                 }
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity
 
     //method readFile
     private String readFIle() {
-        File fileEvents = new File(MainActivity.this.getFilesDir() + "/text/sample");
+        File fileEvents = new File(MainActivity.this.getFilesDir() + "/text/HasilSensor");
         StringBuilder text = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileEvents));
@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
-        //meng get orientasi perangkat (azimuth, pitch, roll) berdasarkan
+        //mendapatkan nilai orientasi perangkat (azimuth, pitch, roll) berdasarkan
         // pada matriks rotasi. Satuan output adalah radian.
         float orientationValues[] = new float[3];
         if (rotationOK) {
